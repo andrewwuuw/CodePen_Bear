@@ -1,0 +1,129 @@
+$face: #b65e29;
+$face2: #e1a368;
+$mouth: #683210;
+
+body{
+  background: $face;
+}
+.bear{
+  width: 400px;
+  height: 400px;
+  background: $face;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  &:hover{
+    .mouth{
+      width: 120px;
+      margin-left: -60px;
+      transition: all 500ms;
+    }
+  }
+}
+$faceS: 240px;
+.face{
+  width: $faceS;
+  height: $faceS;
+  background: $face2;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  margin-left: -$faceS / 2;
+  bottom: 20px;
+  &:hover{
+    .mouth{
+      height: 100px;
+    }
+  }
+}
+.nose{
+  width: 30px;
+  height: 30px;
+  background: #333;
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  margin-left: -15px;
+  border-radius: 50%;
+  &:hover{
+    animation: shake 100ms alternate 4;
+    ~ .mouth{
+      width: 40px;
+      margin-left: -20px;
+    }
+    ~ .eye:before{
+      margin: -5px 0 0 -5px;
+    }
+    ~ .eye:nth-of-type(2):before{
+      margin: -5px 0 0 -10px;
+    }
+  }
+}
+.eye{
+  width: 30px;
+  height: 30px;
+  background: #000;
+  position: absolute;
+  top: -20px;
+  border-radius: 50%;
+  transition: all 500ms;
+  &:before{
+    content:'';
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    background: #fff;
+    left: 50%;
+    top: 50%;
+    margin-left: -7.5px;
+    margin-top: -7.5px;
+    border-radius: 50%;
+    transition: all 500ms;
+  }
+  &:nth-of-type(2){
+    right: 0;
+  }
+}
+.mouth{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    margin-left: -20px;
+    background: $mouth;
+    border-radius: 50%;
+}
+.eye-mask{
+  height: 40px;
+  position: absolute;
+  top: -25px;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  &:hover{
+    ~ .eye{
+      height: 10px;
+      width: 50px;
+      border-radius: 5px;
+      transform: rotate(25deg);
+      &:before{
+        display: none;
+      }
+      &:nth-of-type(2){
+        transform: rotate(-25deg);
+      }
+    }
+  }
+}
+@keyframes shake{
+  0%{
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    transform: translate3d(0, -5px, 0);
+  }
+}
